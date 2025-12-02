@@ -1,9 +1,8 @@
-// File: app/src/main/java/com/example/test_lab_week_12/MovieViewModel.kt
-package com.example.test_lab_week_12
+package com.example.test_lab_week_13
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.test_lab_week_12.model.Movie
+import com.example.test_lab_week_13.model.Movie
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
