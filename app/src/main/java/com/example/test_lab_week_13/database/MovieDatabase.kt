@@ -4,8 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.test_lab_week_13.model.Movie
 
-@Database(entities = [Movie::class], version = 1)
+@Database(
+    entities = [Movie::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class MovieDatabase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
@@ -16,17 +21,12 @@ abstract class MovieDatabase : RoomDatabase() {
 
         fun getInstance(context: Context): MovieDatabase {
             return instance ?: synchronized(this) {
-                instance ?: buildDatabase(context.applicationContext)
-                    .also { instance = it }
+                instance ?: Room.databaseBuilder(
+                    context.applicationContext,
+                    MovieDatabase::class.java,
+                    "movie-db"
+                ).build().also { instance = it }
             }
-        }
-
-        private fun buildDatabase(context: Context): MovieDatabase {
-            return Room.databaseBuilder(
-                context,
-                MovieDatabase::class.java,
-                "movie-db"
-            ).build()
         }
     }
 }

@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.test_lab_week_13"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.test_lab_week_13"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation (libs.androidx.work.runtime)
 
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)

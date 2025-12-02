@@ -8,11 +8,12 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 @Entity(tableName = "movies")
 data class Movie(
-    @PrimaryKey
-    val id: Int,
+    @PrimaryKey val id: Int = 0,
 
     val adult: Boolean = false,
-    val backdrop_path: String? = null,
+
+    @Json(name = "backdrop_path")
+    val backdropPath: String? = null,
 
     @Json(name = "original_language")
     val originalLanguage: String? = null,
