@@ -1,17 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    kotlin("kapt")
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.example.test_lab_week_13"
-    compileSdk = 36
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.test_lab_week_13"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -28,7 +28,7 @@ android {
         }
     }
 
-    buildFeatures{
+    buildFeatures {
         dataBinding = true
     }
 
@@ -43,14 +43,19 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    kapt(libs.androidx.room.compiler)
+
     implementation(libs.moshi.kotlin)
+    kapt(libs.moshi.kotlin.codegen)
+
     implementation(libs.androidx.recyclerview)
     implementation(libs.glide)
     implementation(libs.retrofit)
     implementation(libs.converter.moshi)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
-    kapt(libs.moshi.kotlin.codegen)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -59,6 +64,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
